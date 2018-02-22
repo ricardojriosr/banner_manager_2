@@ -4,7 +4,7 @@ if ($debug) {
     echo "<pre>",print_r($_SERVER),"</pre>";
     exit();
 }
-//header("Content-Type:application/json");
+header("Content-Type:application/json");
 //Required The Database File
 require "data.php";
 //Initialize the Variabels
@@ -20,7 +20,6 @@ if(!empty($_GET['widget'])) {
   $widget_url  = $_SERVER['HTTP_HOST'];
 
 	$show_widget = get_widget($widget_name, $widget_hash, $widget_url);
-
 	if(empty($show_widget)) {
 		  response(200,"Widget Not Found",NULL);
 	} else {
@@ -32,7 +31,7 @@ if(!empty($_GET['widget'])) {
 }
 
 function response($status,$status_message,$data) {
-  	//header("HTTP/1.1 ".$status);
+  	header("HTTP/1.1 ".$status);
 
   	$response['status']=$status;
   	$response['status_message']=$status_message;
