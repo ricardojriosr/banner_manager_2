@@ -4,7 +4,7 @@ if ($debug) {
     echo "<pre>",print_r($_SERVER),"</pre>";
     exit();
 }
-header("Content-Type:application/json");
+//header("Content-Type:application/json");
 //Required The Database File
 require "data.php";
 //Initialize the Variabels
@@ -38,6 +38,6 @@ function response($status,$status_message,$data) {
   	$response['data']=$data;
 
   	$json_response = json_encode($response);
-  	echo $json_response;
+  	echo $response['data'];
 }
 ?>
